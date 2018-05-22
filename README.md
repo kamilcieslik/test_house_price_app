@@ -34,3 +34,20 @@ Konwersja pliku z ścieżkami do zasobów wykorzystywanych w Qt Designerze:
 ```
 pyrcc5 resource.qrc -o resource_rc.py
 ```
+
+### Zrzuty ekranu prezentujące działanie aplikacji:
+<p align="center">
+1. Typowanie adresów.
+</p>
+<p align="center">
+<img height="480" width="814" src="https://image.ibb.co/gTwE6T/1.png" />
+</p>
+<p align="center">
+
+<p align="center">
+2. Wycena mieszkań.
+</p>
+<p align="center">
+<img height="480" width="814" src="https://image.ibb.co/kBwst8/2.png" />
+</p>
+<p align="center">
