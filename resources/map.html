@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html id="ht">
+<head>
+    <style>
+        #map {
+            height: 100%;
+            width: 100%;
+        }
+
+        #body {
+            margin: 0;
+            height: 100vh;
+            position: fixed;
+            overflow-y: hidden;
+            width: 100%;
+        }
+    </style>
+</head>
+<body id="body">
+<div id="map"></div>
+
+<object width=300 height=100
+        classid="clsid:8AD9C840-044E-11D1-B3E9-00805F499D93"
+        codebase="http://java.sun.com/products/plugin/autodl/jinstall-1_4-windows-i586.cab#Version=1,4,0,0">
+    <param name="id" value="AppletABC"/>
+    <param name="code" value="MapItemsApplet"/>
+    <!--[if !IE]> -->
+    <object width="300" height="100" type="application/x-java-applet">
+        <param name="id" value="AppletABC"/>
+        <param name="code" value="MapItemsApplet"/>
+    </object>
+    <!-- <![endif]-->
+</object>
+
+<script type="text/javascript">
+    var initLat = 52.237049;
+    var initLng = 21.017532;
+    var yourFlatLat = 52.237049;
+    var yourFlatLng = 21.017532;
+    var referenceCityLat;
+    var referenceCityLng;
+    var drawFlatMarker = false;
+    var drawReferenceCity = false;
+
+    function initMap() {
+        var initCoordinates = {lat: initLat, lng: initLng};
+        var yourFlatCoordinates = {lat: yourFlatLat, lng: yourFlatLng};
+        var referenceCityCoordinates = {lat: referenceCityLat, lng: referenceCityLng};
+
+
+        if (drawFlatMarker === true) {
+            map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 12,
+                center: yourFlatCoordinates
+            });
+
+            var yourFlatMarker = new google.maps.Marker({
+                position: yourFlatCoordinates,
+                map: map,
+                icon: {
+                    url: String('image/icon.png'),
+                    scaledSize: new google.maps.Size(75, 75),
+                    origin: new google.maps.Point(0, 0),
+                    anchor: new google.maps.Point(0, 0)
+                },
+                title: String({
+                    text: String("TWOJE MIESZKANIE"),
+                    color: String("white"),
+                    fontSize: String("14px"),
+                    fontWeight: String("bold")
+                })
+            });
+
+            var yourFlatInfoWindow = new google.maps.InfoWindow({
+                content: String('<h3>Wyceniane mieszkanie</h3>')
+            });
+
+            yourFlatMarker.addListener('click', function () {
+                yourFlatInfoWindow.open(map, yourFlatMarker);
+            });
+
+            if (drawReferenceCity === true) {
+                var referenceCityMarker = new google.maps.Marker({
+                    position: referenceCityCoordinates,
+                    map: map,
+                    icon: {
+                        url: 'image/reference_city_marker.png',
+                        scaledSize: new google.maps.Size(75, 75), // scaled size
+                        origin: new google.maps.Point(0, 0), // origin
+                        anchor: new google.maps.Point(0, 0) // anchor
+                    }
+                });
+
+                var referenceCityInfoWindow = new google.maps.InfoWindow({
+                    content: String('<h3>Miasto odniesienia</h3>')
+                });
+
+                referenceCityMarker.addListener('click', function () {
+                    referenceCityInfoWindow.open(map, referenceCityMarker);
+                });
+            }
+        }
+        else {
+            map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 12,
+                center: initCoordinates
+            });
+        }
+    }
+</script>
+
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEmx5P3vl4ox4OU6nPgwTbU9k-_0Zm6Lo&callback=initMap"
+        type="text/javascript"></script>
+
+</body>
+</html>
