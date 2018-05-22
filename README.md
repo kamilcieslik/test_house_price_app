@@ -1,10 +1,7 @@
 # Wycena mieszkań - House Price Calc
 
-Aplikacja desktopowa umożliwiająca wycenę domów/mieszkań w Polsce na podstawie wprowadzonych parametrów,
-takich jak: metraż, rodzaj zabudowy, rynek, rok budowy, materiał budynku. Dodatkowo program uwzględnia lokalizację, 
-tzn. położenie względem największych miast w Polsce (geolokalizacja Google Maps Api) wraz z widokiem na mapę, 
-obsługuje autouzupełnianie wprowadzanego adresu domu/mieszkania oraz umożliwia uwzględnianie kosztów atrybutów 
-dodatkowych (balkon, ogródek, winda, strzeżone osiedle itp.)
+Aplikacja desktopowa umożliwiająca wycenę domów/mieszkań w Polsce korzystająca
+z biblioteki [House Price Calculator Library](https://github.com/kamilcieslik/house_price_calculator_library)
 
 ### Autor:
 
@@ -22,7 +19,7 @@ dodatkowych (balkon, ogródek, winda, strzeżone osiedle itp.)
 
 ### Wykorzystane narzędzia:
 
-- PyCharm Professional IDEA 2018.1.1 <br />
+- PyCharm Professional IDEA 2018.1.3 <br />
 
 ### Wykorzystane programy wraz z komendami:
 
