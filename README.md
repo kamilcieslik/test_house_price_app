@@ -1,6 +1,6 @@
 # Wycena mieszkań - House Price Calc
 
-Aplikacja desktopowa umożliwiająca wycenę domów/mieszkań w Polsce.
+Aplikacja desktopowa umożliwiająca wycenę domów/mieszkań w Polsce. </b>
 Wykorzystywana biblioteka - [House Price Calculator Library](https://github.com/kamilcieslik/house_price_calculator_library)
 
 ### Autor:
