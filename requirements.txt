@@ -1,0 +1,8 @@
+certifi==2018.4.16
+chardet==3.0.4
+git+git://github.com/kamilcieslik/house_price_calculator_library.git#egg=house-price-calculator
+idna==2.6
+PyQt5==5.10
+requests==2.18.4
+sip==4.19.8
+urllib3==1.22

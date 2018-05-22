@@ -3,8 +3,7 @@ from PyQt5 import QtWidgets
 from src.gui.main_gui import GuiMainWindow
 from src.gui.widgets_data_validation import DataValidation
 from calculator.prices_calculator import PricesCalculator
-from calculator.exception.construction_year_violation_exception \
-    import ConstructionYearViolationException
+from calculator import exception
 from googlemaps.exceptions import TransportError
 
 
@@ -226,7 +225,8 @@ class MainGuiController(object):
                     "referenceCityLng=" + str(
                         calculator_result.nearest_reference_city.longitude))
                 self._ui.browser.page().runJavaScript("initMap();")
-            except ConstructionYearViolationException as e:
+            except (exception.ConstructionYearViolationException,
+                    exception.FlatParameterMismatchException) as e:
                 msgBox = QtWidgets.QMessageBox(self._ui.widget_central)
                 msgBox.about(self._ui.widget_central, "Ostrzeżenie",
                              "Operacja oszacowania wartości nie powiedzie się."
