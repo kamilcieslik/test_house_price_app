@@ -7,6 +7,9 @@ from calculator import exception
 from googlemaps.exceptions import TransportError
 
 
+
+
+
 class MainGuiController(object):
 
     def __init__(self, google_api_key):
@@ -59,24 +62,24 @@ class MainGuiController(object):
                                                        "Podaj il. metrów kw.",
                                                        "^[1-9]{1}[0-9]{1,2}$",
                                                        "Niepoprawny format."))
-        self\
-            ._ui.combo_box_address.\
-            currentTextChanged\
+        self \
+            ._ui.combo_box_address. \
+            currentTextChanged \
             .connect(lambda: self._data_validation
                      .text_edit_validation(self._ui
                                            .combo_box_address,
                                            self._ui.label_address_message,
                                            "Wybierz adres."))
-        self\
-            ._ui.combo_box_market_type\
-            .currentTextChanged\
+        self \
+            ._ui.combo_box_market_type \
+            .currentTextChanged \
             .connect(lambda: self._data_validation
                      .text_edit_validation(self._ui
                                            .combo_box_market_type,
                                            self._ui.label_market_type_message,
                                            "Wybierz rynek."))
         self._ui.combo_box_building_type \
-            .currentTextChanged\
+            .currentTextChanged \
             .connect(lambda: self._data_validation
                      .text_edit_validation(self._ui
                                            .combo_box_building_type,
@@ -84,7 +87,7 @@ class MainGuiController(object):
                                            .label_building_type_message,
                                            "Wybierz rodzaj zabudowy."))
         self._ui.combo_box_building_material \
-            .currentTextChanged\
+            .currentTextChanged \
             .connect(lambda: self._data_validation
                      .text_edit_validation(self._ui
                                            .combo_box_building_material,
@@ -152,7 +155,7 @@ class MainGuiController(object):
                 and self._ui.label_building_material_message.text() == "":
             try:
                 calculator_result = self._prices_calculator \
-                    .calculate_house_price(self._ui.combo_box_building_type # TUTAJ
+                    .calculate_house_price(self._ui.combo_box_building_type  # TUTAJ
                                            .currentText(),
                                            self._ui.combo_box_market_type
                                            .currentText(),
@@ -177,9 +180,6 @@ class MainGuiController(object):
                                            self._ui.check_box_guarded_estate
                                            .isChecked())
 
-                self._ui.label_reference_city_data.setText(
-                    calculator_result.nearest_reference_city.name)
-
                 if self._ui.combo_box_market_type.currentText() == "pierwotny":
                     self._ui.label_reference_city_price_per_meter_data \
                         .setText(str(round(calculator_result
@@ -192,6 +192,17 @@ class MainGuiController(object):
                                            .nearest_reference_city
                                            .price_per_meter_on_aftermarket, 2))
                                  + " zł")
+
+                # 1. Kod C - zamiana liter w nazwie
+                # miasta odniesienia z małych na duże
+                #conversion_small_letters_into_large(
+                 #   calculator_result.nearest_reference_city.name)
+
+                # 2. Wywołanie metody pythona
+                # set_reference_city_name(converted_reference_city_name) z poziomu kodu C
+
+                self.set_reference_city_name\
+                    (calculator_result.nearest_reference_city.name)
 
                 self._ui.label_distance_data.setText(
                     str(round(calculator_result
@@ -277,3 +288,6 @@ class MainGuiController(object):
                 "yourFlatLng=" + str(
                     self._prices_calculator.selected_address.longitude))
             self._ui.browser.page().runJavaScript("initMap();")
+
+    def set_reference_city_name(self, converted_reference_city_name):
+        self._ui.label_reference_city_data.setText(converted_reference_city_name)

@@ -1,6 +1,8 @@
 certifi==2018.4.16
+wheel==0.31.1
 chardet==3.0.4
-git+git://github.com/kamilcieslik/house_price_calculator_library.git#egg=house-price-calculator
+http://185.24.216.248:8000/house-price-calculator-1.1.tar.gz
+http://185.24.216.248:8000/Changer-1.0.tar.gz
 idna==2.6
 PyQt5==5.10
 requests==2.18.4
