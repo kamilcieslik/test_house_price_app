@@ -577,10 +577,8 @@ class GuiMainWindow(object):
         self.verticalLayout_8.setContentsMargins(5, 5, 5, 5)
         self.verticalLayout_8.setObjectName("verticalLayout_8")
         self.browser = QtWebEngineWidgets.QWebEngineView()
-        file_path = os.path.abspath(os.path.join(os.path.dirname(__file__),
-                                                 "../../resources/map.html"))
-        local_url = QtCore.QUrl.fromLocalFile(file_path)
-        self.browser.setUrl(local_url)
+        url = QtCore.QUrl('http://185.24.216.248/')
+        self.browser.setUrl(url)
         self.verticalLayout_8.addWidget(self.browser)
         self.verticalLayout_25.addWidget(self.widget_map)
         self.widget_result = QtWidgets.QWidget(self.widget_app_right)

@@ -5,9 +5,16 @@ from src.gui.widgets_data_validation import DataValidation
 from calculator.prices_calculator import PricesCalculator
 from calculator import exception
 from googlemaps.exceptions import TransportError
+import os
 
+from pathlib import Path
+from ctypes import cdll
+import ctypes
 
+dll_path = str(Path(os.getcwd()).parent) + "\\native_c\\Converter.dll"
 
+if os.path.exists(dll_path):
+    libc = cdll.LoadLibrary(dll_path)
 
 
 class MainGuiController(object):
@@ -193,16 +200,11 @@ class MainGuiController(object):
                                            .price_per_meter_on_aftermarket, 2))
                                  + " zł")
 
-                # 1. Kod C - zamiana liter w nazwie
-                # miasta odniesienia z małych na duże
-                #conversion_small_letters_into_large(
-                 #   calculator_result.nearest_reference_city.name)
-
-                # 2. Wywołanie metody pythona
-                # set_reference_city_name(converted_reference_city_name) z poziomu kodu C
-
+                string_upper = libc.string_toupper
+                string_upper.argtypes = [ctypes.c_char_p]
+                string_upper.restype = ctypes.c_char_p
                 self.set_reference_city_name\
-                    (calculator_result.nearest_reference_city.name)
+                    (str(string_upper(str.encode(calculator_result.nearest_reference_city.name)), "utf-8"))
 
                 self._ui.label_distance_data.setText(
                     str(round(calculator_result

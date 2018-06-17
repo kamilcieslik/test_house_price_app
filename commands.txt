@@ -1,0 +1,4 @@
+1. Utworzenie biblioteki z kodu C
+g++ -Wall -Wextra -O -ansi -pedantic -shared Converter.cpp -o Converter.dll
+
+2. Utworzenie binarnej wersji projektu
