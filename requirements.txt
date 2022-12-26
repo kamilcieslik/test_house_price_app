@@ -1,5 +1,5 @@
 certifi==2018.4.16
-wheel==0.31.1
+wheel==0.38.1
 chardet==3.0.4
 http://185.24.216.248:8000/house-price-calculator-1.2.tar.gz
 idna==2.6
